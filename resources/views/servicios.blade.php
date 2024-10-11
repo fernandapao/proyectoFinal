@@ -17,8 +17,7 @@
                     <div class="card-body">
                         <h3 class="card-title">{{ $servicio->nombre }}</h3>
                         <p class="card-text">{{ $servicio->descripcion }}</p>
-                        <p>Tarifa acceso: <strong>USD {{ $servicio->tarifa_acceso }}</strong></p>
-                        <p>Tarifa socios: <strong>USD {{ $servicio->tarifa_socios }}</strong></p>
+                        <p>Tarifa acceso: <strong>$ {{ $servicio->tarifa_acceso }}</strong></p>
                         <p><strong>Condiciones:</strong> {{ $servicio->condiciones }}</p>
                         
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">

@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('imagen');
             $table->unsignedInteger('tarifa_acceso');
-            $table->unsignedInteger('tarifa_socios');
             $table->text('descripcion')->nullable();
             $table->text('condiciones')->nullable();
             $table->timestamps();

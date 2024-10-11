@@ -96,7 +96,7 @@
 
 
         <footer class="footer">
-            <p>Copyright &copy; Portales y comercio electrónico - Bustos - Paoliello 2024</p>
+            <p>Copyright &copy; Proyecto Final - Bustos - Paoliello 2024</p>
         </footer>
     </div>
 
