@@ -48,7 +48,7 @@ Route::post('/admin/novedades/{id}/editar', [\App\Http\Controllers\NewsControlle
 Route::get('/admin/novedades/{id}/eliminar', [\App\Http\Controllers\NewsController::class, 'eliminar'])
     ->name('novedades.eliminar')
     ->middleware('auth');
-    
+
 Route::post('/admin/novedades/{id}/eliminar', [\App\Http\Controllers\NewsController::class, 'destruir'])
     ->name('novedades.confirmar-eliminar')
     ->middleware('auth');
@@ -57,11 +57,13 @@ Route::post('/admin/novedades/{id}/eliminar', [\App\Http\Controllers\NewsControl
 //Inicio de sesión
 
 Route::get('inicio-sesion', [\App\Http\Controllers\AuthController::class, 'showLogin'])
-    ->name('auth.showLogin'); 
+    ->name('auth.showLogin');
 
 Route::post('inicio-sesion', [\App\Http\Controllers\AuthController::class, 'doLogin'])
-    ->name('auth.doLogin'); 
+    ->name('auth.doLogin');
 
 Route::post('cerrar-sesion', [\App\Http\Controllers\AuthController::class, 'logout'])
     ->name('auth.logout');
 
+
+/* ADMIN */
