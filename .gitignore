@@ -1,0 +1,30 @@
+# Laravel specific
+/vendor
+/node_modules
+/public/storage
+/storage/*.key
+/bootstrap/cache
+
+# Laravel environment files
+.env
+.env.*.backup
+.env.backup
+.env.local
+.env.testing
+
+# Debug files
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE specific
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
