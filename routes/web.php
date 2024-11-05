@@ -22,10 +22,13 @@ Route::get('/', function () {
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
+
 Route::middleware(['auth', 'user-access:user'])->group(function () {
 
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 });
+
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 /*------------------------------------------
 --------------------------------------------
@@ -50,7 +53,7 @@ Route::middleware(['auth', 'user-access:manager'])->group(function () {
 
 Route::get('/inicio', [HomeController::class, 'index'])->name('inicio');
 
-    /*
+
 Route::get('/quienes-somos', [\App\Http\Controllers\AboutController::class, 'index'])
     ->name('quienes-somos');
 
@@ -97,7 +100,7 @@ Route::post('/admin/novedades/{id}/eliminar', [\App\Http\Controllers\NewsControl
     ->name('novedades.confirmar-eliminar')
     ->middleware('auth');
 
-
+  /*
 //Inicio de sesión
 
 Route::get('inicio-sesion', [\App\Http\Controllers\AuthController::class, 'showLogin'])

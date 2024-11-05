@@ -52,7 +52,7 @@ class User extends Authenticatable
      * @param  string  $value
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
-    protected function type(): Attribute
+    protected function rol(): Attribute
     {
         return new Attribute(
             get: fn ($value) =>  ["user", "admin", "manager"][$value],

@@ -44,6 +44,8 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<?= route('contactanos') ?>">Contactanos</a>
                             </li>
+
+                            {{--
                             @auth
                             <li class="nav-item">
                                 <a class="btn btn-primary" href="<?= url('admin/novedades') ?>">Admin</a>
@@ -61,8 +63,8 @@
                                 @else
                                 <li class="nav-item">
                                     <a class= "btn btn-dark ms-2" href="<?= route('auth.showLogin');?>">Iniciar Sesión</a>
-                                </li> 
-                                @endauth
+                                </li>
+                                @endauth--}}
                         </ul>
                     </div>
                 </div>
@@ -74,7 +76,7 @@
             <div class="container">
                 @if(session()->has('feedback.message-sucess'))
                 <p class="alert alert-success mt-3"> <i class="bi bi-check-circle"></i> {{ session()->get('feedback.message-sucess') }}</p>
-                
+
                 @endif
 
                 @if(session()->has('feedback.message-error'))
@@ -85,7 +87,7 @@
                 <p class="alert alert-warning mt-3"><i class="bi bi-exclamation-circle"></i> {{ session()->get('feedback.message-warning') }}</p>
                 @endif
 
-               
+
 
             </div>
 

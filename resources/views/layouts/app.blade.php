@@ -1,80 +1,86 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <title>AeroAsist - <?= $title; ?></title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="shortcut icon" href="{{ asset('img/aero-asist-icon.png') }}" />
 </head>
-<body>
+<body class="font-sans antialiased dark:bg-black dark:text-white/50">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="left">
+                    <a class="navbar-brand" href="<?= route('inicio') ?>"><img src="{{ asset('img/aero-asist-02.png') }}" alt="logo de AeroAsist" class="logo-nav"></a>
+                </div>
+                <div class="right">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="<?= route('inicio') ?>">Home</a>
                             </li>
-                        @endguest
-                    </ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= route('quienes-somos') ?>">Quienes somos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= route('servicios') ?>">Servicios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= route('novedades') ?>">Novedades</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= route('contactanos') ?>">Contactanos</a>
+                            </li>
+                            {{--
+                            @auth
+                            <li class="nav-item">
+                                <a class="btn btn-primary" href="{{ url('admin/novedades') }}">Admin</a>
+                            </li>
+                            @endauth
+
+                                @auth
+                                <li class="nav-item">
+                                    <form action="{{ route('auth.logout') }}" method="post">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger ms-2">{{ auth()->user()->email }} (Cerrar Sesión)</button>
+                                    </form>
+                                </li>
+                                @else
+                                <li class="nav-item">
+                                    <a class= "btn btn-dark ms-2" href="{{ route('auth.showLogin')}}">Iniciar Sesión</a>
+                                </li>
+                                @endauth --}}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
+        <main>
+            <div class="container">
+                @if(session()->has('feedback.message-sucess'))
+                <p class="alert alert-success mt-3"> <i class="bi bi-check-circle"></i> {{ session()->get('feedback.message-sucess') }}</p>
 
-        <main class="py-4">
-            @yield('content')
+                @endif
+                @if(session()->has('feedback.message-error'))
+                <p class="alert alert-danger mt-3"><i class="bi bi-x-circle"></i> {{ session()->get('feedback.message-error') }}</p>
+                @endif
+                @if(session()->has('feedback.message-warning'))
+                <p class="alert alert-warning mt-3"><i class="bi bi-exclamation-circle"></i> {{ session()->get('feedback.message-warning') }}</p>
+                @endif
+
+            </div>
+            <?= $slot; ?>
         </main>
+        <footer class="footer">
+            <p>Copyright &copy; Portales y comercio electrónico - Bustos - Paoliello 2024</p>
+        </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
