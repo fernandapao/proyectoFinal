@@ -1,5 +1,5 @@
 @extends('layouts.app-admin',[
-'TituloPage' =>'MovilRenta',
+'TituloPage' =>'AeroAsist',
 'seccionActiva' => 'Home',
 'SubseccionActiva' => '',
 'submenu' => ''])
